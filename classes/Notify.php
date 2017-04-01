@@ -17,13 +17,15 @@ class Notify {
                 $temp = DB::query('SELECT posts.user_id AS receiver, post_likes.user_id AS sender FROM posts, post_likes WHERE posts.id = post_likes.post_id AND posts.id=:postid', array(':postid'=>$postid));
                 $r = $temp[0]["receiver"];
                 $s = $temp[0]["sender"];
-                DB::query('INSERT INTO notifications VALUES (\'\', :type, :receiver, :sender, :extra)', array(':type'=>2, ':receiver'=>$r, ':sender'=>$s, ':extra'=>""));
+                if ($r!=$s) {
+                        DB::query('INSERT INTO notifications VALUES (\'\', :type, :receiver, :sender, :extra)', array(':type'=>2, ':receiver'=>$r, ':sender'=>$s, ':extra'=>""));
+                }
         }
 }
 
-public static function createCommentsNotify($commentid=0){
-       if ($commentid != 0) {
-        $temp = DB::query('SELECT posts.user_id AS receiver, comments.user_id AS sender FROM posts, comments WHERE posts.id = comments.post_id AND comments.id=:commentid', array(':commentid'=>$commentid));
+public static function createCommentsNotify($comment=0){
+       if (strlen($comment) != 0) {
+        $temp = DB::query('SELECT posts.user_id AS receiver, comments.user_id AS sender FROM posts, comments WHERE posts.id = comments.post_id AND comments.comment=:comment', array(':comment'=>$comment));
         $r = $temp[0]["receiver"];
         $s = $temp[0]["sender"];
         if ($r!=$s) {

@@ -47,7 +47,7 @@ if (isset($_GET['username'])) {
     }
     if (isset($_POST['unfollow'])) {
            if (FollowUser::unfollow($userid, $followerid)){
-            Notify::createFollowNotify()
+            // Notify::createFollowNotify();
             echo "User unfollowed";
             $isFollowing = False;
         }else{

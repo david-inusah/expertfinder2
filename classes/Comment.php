@@ -8,6 +8,7 @@ class Comment {
                         echo 'Invalid post ID';
                 } else {
                         DB::query('INSERT INTO comments VALUES (\'\', :comment, :userid, NOW(), :postid)', array(':comment'=>$commentBody, ':userid'=>$userId, ':postid'=>$postId));
+                                Notify::createCommentsNotify($commentBody);
                 }
         }
         public static function displayComments($postId) {

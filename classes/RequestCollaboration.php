@@ -11,6 +11,7 @@ class RequestCollaboration
             if (!DB::query('SELECT id FROM collaboration_requests WHERE sender_id=:followerid  AND receiver_id=:userid', array(':userid'=>$userid,':followerid'=>$followerid))) {
                 DB::query('INSERT INTO collaboration_requests VALUES (\'\', :userid, :followerid,0 ,0)', array(':userid'=>$userid, ':followerid'=>$followerid));
                 $requestSent = True;
+                Notify::createRequestSentNotify($followerid, $userid);
             }
         }
         //if request is pending (accepted=0 & rejected=0), user cannot send another request
@@ -37,4 +38,4 @@ class RequestCollaboration
             DB::query('UPDATE collaboration_requests SET rejected=0 WHERE id=:requestid', array(':requestid'=>$requestid));
           }
 }
-?>
+?>  
