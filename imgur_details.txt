@@ -1,4 +1,0 @@
-https://imgur.com/#access_token=9a4b5d399d63a9d2af16081aca7e0a2ea85d9105&expires_in=2419200&token_type=bearer&refresh_token=b6d787f2ca6eaba384ce6af08c55dad9ff749208&account_username=davidinusah&account_id=56273193
-
-//refresh_token=b6d787f2ca6eaba384ce6af08c55dad9ff749208
-//access_token=9a4b5d399d63a9d2af16081aca7e0a2ea85d9105
