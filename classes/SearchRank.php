@@ -18,7 +18,7 @@ class SearchRank
 
         }
 
-        function getDistanceMatrix(){
+        public function getDistanceMatrix(){
                 $origin=$this->user_location;
                 $destination=$this->expert_location;
                 // $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".$origin."&destinations=".$destination."&key=AIzaSyCQcqwU8Akzv93zlX5EJEeKwDYT12D3I3Y";
@@ -43,7 +43,7 @@ class SearchRank
                 }
         }
 
-        function displayDetails(){
+        public function displayDetails(){
                 $details = "Expert name: ".$this->expertname."</br>Workshed location: ".$this->expert_location."</br>Distance from you: ".$this->distance."</br>Average time from you: ".$this->duration."</br>";
                 return $details;
         }

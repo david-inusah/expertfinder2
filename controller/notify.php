@@ -40,7 +40,7 @@ if (DB::query('SELECT * FROM notifications WHERE receiver=:userid', array(':user
                                 echo $senderName." followed you<hr />";
                         }
                 }else if ($n['type'] == 5) {
-                        $senderid = DB::query('SELECT id FROM users WHERE id=:senderid', array(':senderid'=>$n['sender']))[0]['id'];
+                        $senderid = DB::query(  'SELECT id FROM users WHERE id=:senderid', array(':senderid'=>$n['sender']))[0]['id'];
                         if ($senderid!=$userid) {
                                 $senderName = DB::query('SELECT username FROM users WHERE id=:senderid', array(':senderid'=>$n['sender']))[0]['username'];
                                 echo $senderName." sent you a collaboration request<hr />";

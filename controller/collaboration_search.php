@@ -8,8 +8,8 @@ $username="";
 if (Login::isLoggedIn()) {
 	$userid = Login::isLoggedIn();
 	if (DB::query('SELECT username FROM users WHERE id=:userid', array(':userid'=>$userid))) {
-        $username = DB::query('SELECT username FROM users WHERE id=:userid', array(':userid'=>$userid))[0]['username'];
-    }
+		$username = DB::query('SELECT username FROM users WHERE id=:userid', array(':userid'=>$userid))[0]['username'];
+	}
 }
 else{
 	die('User not logged');
@@ -62,12 +62,12 @@ if (isset($_POST['collaboration_searchbox'])) {
 			$obj = new SearchRank($expert, $searcherworklocation,$expertworklocation);
 			$obj->displayDetails();
 		// echo "</br></br>";
-			echo "<div style='width: 110px; color: navy; background-color: pink; border: 2px solid blue; padding: 5px;'>
-			Found expert</br>
-			$expert.</br>
-			$expertskill
-			$expertworklocation.</br>
-		</div></br>";
+		// 	echo "<div style='width: 110px; color: navy; background-color: pink; border: 2px solid blue; padding: 5px;'>
+		// 	Found expert</br>
+		// 	$expert.</br>
+		// 	$expertskill
+		// 	$expertworklocation.</br>
+		// </div></br>";
 	}
 }else{
 	echo "Sorry <b><?php echo $username;?></b>, there are no users with this interests right now :)";
@@ -85,8 +85,50 @@ if (isset($_POST['collaboration_searchbox'])) {
 
 }
 ?>
-<h2>Search by interest to find other experts to collaborate with here</h2>
-<form action="collaboration_search.php" method="post">
-	<input type="text" name="collaboration_searchbox" value="">
-	<input type="submit" name="collab_search" value="Search">
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Import Google Icon Font -->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Import materialize.css -->
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+	<!-- Let browser know website is optimized for mobile -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+	<!-- <img src="images/searchpage.jpg" class="center-align"> -->
+
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">Patatte</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="profile.php?username=<?php echo $username; ?>"><i class="material-icons">person</i></a></li>
+				<li><a href="index.php">News Feed</a></li>
+				<li class="active"><a href="collaboration_search.php">Collaborate</a></li>
+				<li><a class="dropdown-button" href=""><i class="material-icons">notifications</i></a></li>
+
+				<li><a class="dropdown-button" href="#!"> <i class="material-icons">more_vert</i></a></li>
+			</ul>
+		</div>
+		<div class="input-field">
+			<input id="search" type="search" required>
+			<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+			<i class="material-icons">close</i>
+		</div>
+	</nav>
+
+	<h4>Search by interest to find other experts to collaborate with here</h4>
+	<form action="collaboration_search.php" method="post">
+		<input type="text" name="collaboration_searchbox" value="">
+		<input type="submit" name="collab_search" value="Search">
+	</form>
+
+<!--   <h3>News Feed</h3>
+-->
+<!-- <!--Import jQuery before materialize.js -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>
